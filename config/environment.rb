@@ -15,5 +15,7 @@ Rails::Initializer.run do |config|
   config.gem 'faker'  
   config.gem 'populator'
   config.gem 'notahat-machinist', :lib => 'machinist', :source => 'http://gems.github.com'
+  config.gem 'jchris-couchrest', :lib => 'couchrest', :source => 'http://gems.github.com'
+  config.gem 'zdzolton-cambric', :lib => 'cambric', :source => 'http://gems.github.com'
   
 end
