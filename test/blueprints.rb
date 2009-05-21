@@ -5,10 +5,11 @@ Sham.login { "#{Faker::Name.first_name}_#{Faker::Name.last_name}".gsub(/'/, '')[
 Sham.sentence { Faker::Lorem.sentence }
 
 FeedItem.blueprint do
+  tweet = Tweet.make
   user
-  tweet_id { Tweet.make.id }
-  tweet_user_id { Tweet.user.id }
-  tweet_created_at { Tweet.created_at }
+  tweet_id { tweet.id }
+  tweet_user_id { tweet.user.id }
+  tweet_created_at { tweet.created_at }
 end
 
 Follow.blueprint do

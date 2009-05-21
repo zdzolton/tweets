@@ -18,8 +18,8 @@ class Follow < ActiveRecord::Base
   end
   
   def create_feed_items_for_follower_with_items_created_by_user_being_followed
-    following.tweets.find_each do |item|
-      follower.feed_item.create!
+    following.tweets.find_each do |tweet|
+      follower.feed_items.create :tweet => tweet, :tweet_user => following
     end
   end
   
