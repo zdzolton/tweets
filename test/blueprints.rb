@@ -21,14 +21,6 @@ class CouchRestExt::Model
 
 end
 
-FeedItem.blueprint do
-  tweet = Tweet.make
-  user
-  tweet_id { tweet.id }
-  tweet_user_id { tweet.user.id }
-  tweet_created_at { tweet.created_at }
-end
-
 Follow.blueprint do
   follower_id { User.make.id }
   following_id { User.make.id }
@@ -41,4 +33,12 @@ end
 
 User.blueprint do
   login { Sham.login }
+end
+
+FeedItem.blueprint do
+  tweet = Tweet.make
+  user
+  tweet_id { tweet.id }
+  tweet_user_id { tweet.user_id }
+  tweet_created_at { tweet.created_at }
 end
