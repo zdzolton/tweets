@@ -4,6 +4,23 @@ require 'faker'
 Sham.login { "#{Faker::Name.first_name}_#{Faker::Name.last_name}".gsub(/'/, '')[0,15].downcase }
 Sham.sentence { Faker::Lorem.sentence }
 
+class CouchRestExt::Model
+  
+  class << self
+    def make attributes={}
+      new(@_blueprint_block.call.merge(attributes)).tap do |obj|
+        yield obj if block_given?
+        obj.save
+      end
+    end
+  
+    def blueprint &block
+      @_blueprint_block = block
+    end
+  end
+
+end
+
 FeedItem.blueprint do
   tweet = Tweet.make
   user
